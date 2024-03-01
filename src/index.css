@@ -12,7 +12,7 @@ body {
   background-image: url('/public/bg.jpg'); 
   background-size: cover;
   background-position: center; 
-  background-repeat: no-repeat;
+  background-repeat:repeat;
   height: 100vh;
 }
 
@@ -34,3 +34,15 @@ code {
   }
 }
 
+input {
+  color: rgb(161, 161, 161);
+  background-color: transparent;
+  flex-grow: 1;
+  padding: 7px;
+  border-radius: 5px;
+  outline: none;
+}
+
+input::placeholder {
+  color: grey;
+}

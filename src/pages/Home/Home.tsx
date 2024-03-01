@@ -46,6 +46,12 @@ const Home = () => {
         <h1 className="text-6xl font-bold mb-6">
           How to Get Started ?
         </h1>
+        <div className='flex'>
+        <img src="/h1.png" alt="Get Started" className="h-[100px] rounded-lg " />
+        <span className="text-[#fff] text-l font-semibold px-4 py-1 flex w-[50vw]">
+            Click on Get started and you will land on content suggestions page then get started on your creative journey with our innovative AI-powered content generator, and watch as your ideas flourish effortlessly
+          </span>
+        </div>
       </div>
     </div>
   );
