@@ -10,7 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('/public/bg.jpg'); 
-  background-size: cover;
+  background-size:cover;
   background-position: center; 
   background-repeat:repeat;
   height: 100vh;
