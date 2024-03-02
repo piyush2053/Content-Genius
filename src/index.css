@@ -9,11 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('/public/bg.jpg'); 
-  background-size:cover;
-  background-position: center; 
-  background-repeat:repeat;
-  height: 100vh;
+  background-image: linear-gradient(to bottom right, #F37E6A, #8F1A75, #5E94B8);
 }
 
 code {

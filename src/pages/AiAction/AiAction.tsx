@@ -4,11 +4,13 @@ import { Card, CardContent, Typography } from '@mui/material';
 import '../../index.css';
 import Lottie from 'react-lottie'
 import animationData from './loader/loder.json'
+import animationDataPopper from './loader/poppers.json'
 
 const AiAction = () => {
   const inputRef = useRef(null);
   const [definitions, setDefinitions] = useState<{ word: string, definition: string, example: string }[]>([]);
   const [loading, setloading] = useState(false);
+  const [poppers, setPoppers] = useState(false);
 
   const handleButtonClick = () => {
     setloading(true)
@@ -19,21 +21,26 @@ const AiAction = () => {
       'X-RapidAPI-Host': 'mashape-community-urban-dictionary.p.rapidapi.com',
       'Content-Type': 'application/json'
     };
-    setTimeout(() => {
-      fetch(`https://mashape-community-urban-dictionary.p.rapidapi.com/define${queryParams}`, {
-        method: 'GET',
-        headers: headers,
-      })
-        .then(response => response.json())
-        .then(data => {
-          setloading(false)
+    fetch(`https://mashape-community-urban-dictionary.p.rapidapi.com/define${queryParams}`, {
+      method: 'GET',
+      headers: headers,
+    })
+      .then(response => response.json())
+      .then(data => {
+        setPoppers(true)
+        setloading(false)
+        setTimeout(() => {
           setDefinitions(data.list);
-        })
-        .catch(error => {
-          setloading(false)
-          console.error('Error:', error);
-        });
-    }, 1000)
+        }, 1000)
+        setTimeout(() => {
+          setPoppers(false)
+        }, 3000)
+      })
+      .catch(error => {
+        setPoppers(false)
+        setloading(false)
+        console.error('Error:', error);
+      });
   }
 
   const handleKeyPress = (event) => {
@@ -49,9 +56,17 @@ const AiAction = () => {
       preserveAspectRatio: "xMidYMid slice"
     }
   };
+  const popperOptions = {
+    loop: false,
+    autoplay: true,
+    animationData: animationDataPopper,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
   return (
-    <div className="fade-in text-white py-16 px-4 md:px-0">
+    <div className="fade-in text-white py-16 px-4 md:px-0 h-screen">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         <div className="flex items-center justify-center mb-4">
           <span className="bg-transparent text-[#fff] text-xs font-semibold px-5 py-1 rounded-full flex border border-white">
@@ -71,15 +86,36 @@ const AiAction = () => {
           ?
           <div> <Lottie
             options={defaultOptions}
-            height={150}
-            width={150}
+            height={50}
+            width={50}
           /></div>
           :
           <button className='bg-[#fff] flex text-[#8c8c8c] text-[20px] font-semibold px-4 py-1 rounded-full border border-white transition-all duration-300 hover:bg-transparent hover:text-[#fff] hover:animate-pulse' onClick={handleButtonClick}>
             Magic <FaMagic className='ml-2 mt-1' />
           </button>}
       </div>
-      <div className="fade-in max-w-7xl mx-auto mt-5 px-7">
+      <div className="fade-in max-w-7xl mx-auto mt-5 px-7" style={{ position: "relative" }}>
+      <div className="poppers" style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', zIndex: 999 }}>
+          {poppers ? <Lottie
+            options={popperOptions}
+            height={500}
+            width={500}
+          /> : null}
+        </div>
+        <div className="poppers" style={{ position: 'absolute', top: 0, left: '0', transform: 'translate(-50%, -50%)', zIndex: 999 }}>
+          {poppers ? <Lottie
+            options={popperOptions}
+            height={500}
+            width={500}
+          /> : null}
+        </div>
+        <div className="poppers" style={{ position: 'absolute', top: 0, left: '100%', transform: 'translate(-50%, -50%)', zIndex: 999 }}>
+          {poppers ? <Lottie
+            options={popperOptions}
+            height={500}
+            width={500}
+          /> : null}
+        </div>
         {definitions.map((definition, index) => (
           <Card key={index} className="mt-3 rounded-full" sx={{ borderRadius: "20px", backgroundColor: "#1E1E1E" }}>
             <CardContent >

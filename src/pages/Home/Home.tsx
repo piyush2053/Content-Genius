@@ -29,7 +29,7 @@ const Home = () => {
           Content Genius
         </h1>
         <div className="flex items-center justify-center mb-8 px-2">
-          <span className="bg-[rgba(242,242,242,0.1)] text-[#fff] text-l font-semibold px-4 py-1 rounded-full flex border border-white">
+          <span className="bg-[rgba(242,242,242,0.1)] text-[#fff] text-l font-semibold px-4 py-1 rounded-lg flex border border-white">
             Content Genius is designed to empower users with the ability to effortlessly refine their sentences into captivating and polished content. With this innovative tool, users can input their sentences and corresponding content, and watch as Content Genius works its magic to generate the top three suggestions, ensuring correctness, coherence, and impact.
           </span>
         </div>
