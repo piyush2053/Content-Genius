@@ -42,3 +42,10 @@ input {
 input::placeholder {
   color: grey;
 }
+
+.inverseColor {
+  background: linear-gradient(to bottom right, #F37E6A, #8F1A75, #5E94B8);
+  background-size: cover;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
